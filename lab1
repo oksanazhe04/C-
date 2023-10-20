@@ -1,0 +1,42 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int number1 = 3;
+        int number2 = 7;
+
+        bool isValidDay = number1 >= 1 && number1 <= 31;
+        bool isValidMonth = number2 >= 1 && number2 <= 12;
+
+        string result;
+
+        if (isValidDay && isValidMonth)
+        {
+            result = "number1 і number2 можуть бути днем і місяцем.";
+        }
+        else
+        {
+            result = "number1 і number2 не можуть бути днем і місяцем.";
+        }
+
+        Console.WriteLine(result);
+
+
+
+        //2
+        double number = 5.75;
+
+        double fraction = number - Math.Floor(number);
+
+        int digit1 = (int)(fraction * 10);
+        int digit2 = (int)((fraction * 100) % 10);
+
+        int sum = digit1 + digit2;
+        Console.WriteLine($"{digit1}+{digit2} = {sum}");
+
+
+
+    }
+}
