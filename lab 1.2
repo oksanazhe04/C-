@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double number;
+
+        Console.Write("Введіть число: ");
+        number = double.Parse(Console.ReadLine());
+
+        if (number > 0)
+        {
+            Console.WriteLine("Число є додатнім.");
+        }
+        else if (number < 0)
+        {
+            Console.WriteLine("Число є від'ємним.");
+        }
+        else
+        {
+            Console.WriteLine("Число рівне нулю.");
+        }
+    }
+}
