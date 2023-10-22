@@ -96,6 +96,31 @@ class Program
         Console.WriteLine("Площа прямокутника: " + area);
 
 
+        //6
+        int number;
+
+        Console.Write("Введіть число: ");
+        number = int.Parse(Console.ReadLine());
+
+        if (number % 2 == 0)
+        {
+            Console.WriteLine("Число є парним");
+        }
+        else
+        {
+            Console.WriteLine("Число є непарним");
+        }
+
+
+        //7
+        double celsius;
+
+        Console.Write("Введіть температуру в градусах Цельсія: ");
+        celsius = double.Parse(Console.ReadLine());
+
+        double farenheit = ((celsius * 9 / 5) + 32);
+
+        Console.WriteLine("Температура в градусах Фаренгейта: " + farenheit);
 
     }
 }
