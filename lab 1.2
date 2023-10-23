@@ -67,6 +67,83 @@ class Program
             Console.WriteLine(Це приголосна буква");
         }
 
-        
+
+        //5
+        int num1, num2, num3;
+
+         Console.Write("Введіть перше число: ");
+         num1 = int.Parse(Console.ReadLine());
+
+         Console.Write("Введіть друге число: ");
+         num2 = int.Parse(Console.ReadLine());
+
+         Console.Write("Введіть третє число: ");
+         num3 = int.Parse(Console.ReadLine());
+
+         int max = Math.Max(num1, Math.Max(num2, num3));
+
+         Console.WriteLine("Максимальне число: " + max);
+
+
+         //6
+        Console.Write("Введіть вік: ");
+        int age = int.Parse(Console.ReadLine());
+
+        if (age >= 12 && age <= 18)
+        {
+            Console.WriteLine("Ти підліток");
+        }
+        else
+        {
+            Console.WriteLine("Ти не підліток");
+        }
+
+
+
+        //7
+        Console.Write("Введіть число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        if (number % 2 == 0)
+        {
+            Console.WriteLine("Число є парним");
+        }
+        else
+        {
+            Console.WriteLine("Число є непарним");
+        }
+
+        if (number % 3 == 0)
+        {
+            Console.WriteLine("Число ділиться на 3");
+        }
+        else
+        {
+            Console.WriteLine("Число не ділиться на 3");
+        }
+
+
+        //8
+        Console.Write("Введіть довжину сторони a: ");
+        double a = double.Parse(Console.ReadLine());
+
+        Console.Write("Введіть довжину сторони b: ");
+        double b = double.Parse(Console.ReadLine());
+
+        Console.Write("Введіть довжину сторони c: ");
+        double c = double.Parse(Console.ReadLine());
+
+        if (a >= b && a >= c)
+        {
+            Console.WriteLine("Сторона a є найдовшою");
+        }
+        else if (b >= a && b >= c)
+        {
+            Console.WriteLine("Сторона b є найдовшою");
+        }
+        else
+        {
+            Console.WriteLine("Сторона c є найдовшою");
+        }
     }
 }
