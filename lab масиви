@@ -17,6 +17,44 @@ class Program
         Console.WriteLine("Середнє арифметичне: " + average);
 
 
-    
+    //2
+    {
+        Console.Write("Введіть рядок для перевірки на паліндром: ");
+        string input = Console.ReadLine();
+
+        Console.WriteLine(IsPalindrome(input)
+            ? "Введений рядок є паліндромом."
+            : "Введений рядок не є паліндромом.");
+    }
+
+    static bool IsPalindrome(string str)
+    {
+        str = str.Replace(" ", "").ToLower();
+
+        for (int i = 0; i < str.Length / 2; i++)
+            if (str[i] != str[str.Length - 1 - i])
+                return false;
+
+        return true;
+    }
+
+
+    //3
+    {
+        int[] numbers = { 7, 56, 9, 25, 12 };
+
+        Console.WriteLine("Парні числа у масиві:");
+
+        foreach (int n in numbers)
+        {
+            if (n % 2 == 0)
+            {
+                Console.WriteLine(n);
+            }
+        }
+
+    //4
+
+    }
     }
 }
