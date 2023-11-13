@@ -7,14 +7,15 @@ class Program
         int[] numbers = { 2, 45, 23, 12, 7};
 
         int sum = 0;
-        foreach (int number in numbers)
+        foreach (int n in numbers)
         {
-            sum += number;
+            sum += n;
         }
 
         double average = (double)sum / numbers.Length;
 
         Console.WriteLine("Середнє арифметичне: " + average);
+     }
 
 
     //2
@@ -53,8 +54,72 @@ class Program
             }
         }
 
-    //4
 
-    }
+    //4
+        int[] numbers = { 10, 45, -17, -25, 3 };
+        int sum = 0;
+        foreach (int n in numbers)
+        {
+            if (n > 0)
+            {
+                sum += n;
+            }
+        }
+        Console.WriteLine("Сума додатних елементів у масиві: " + sum);
+
+     //6
+        int[] numbers = { 9, -65, -2, 10, 5 };
+        int result = 1;
+        foreach (int n in numbers)
+        {
+            if (n < 0)
+            {
+                result *= n;
+            }
+        }
+        Console.WriteLine("Добуток всі хвід’ємн
+
+
+     //1*
+        int[,] matrix = {
+            {1, 7, 3},
+            {6, 9, 5},
+            {4, 8, 9}
+        };
+        int sum_main_diag = 0;
+        int size = matrix.GetLength(0);
+
+        for (int i = 0; i < size; i++)
+        {
+            sum_main_diag += matrix[i, i];
+        }
+        Console.WriteLine("Сума елементів по головній діагоналі: " + sum_main_diag);
+
+
+     //2*
+        int[,] matrix = {
+            {1, 6, 3},
+            {8, 5, 6},
+            {6, 3, 2}
+        };
+
+        int targetColumn = 2;
+        int product = 1;
+        int rows = matrix.GetLength(0);
+
+        if (targetColumn >= 0 && targetColumn < matrix.GetLength(1))
+        {
+
+            for (int i = 0; i < rows; i++)
+            {
+                product *= matrix[i, targetColumn];
+            }
+
+            Console.WriteLine("Добуток елементів у стовпці: " + product);
+        }
+        else
+        {
+            Console.WriteLine("Невірно вказаний номер стовпця.");
+        }
     }
 }
