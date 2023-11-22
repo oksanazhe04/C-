@@ -1,0 +1,98 @@
+class Car
+{
+    public string Name { get; set; }
+    public string Color { get; set; }
+    public double Price { get; set; }
+
+    public const string CompanyName = "MyCarCompany";
+
+    public Car()
+    {
+    }
+
+    public Car(string name, string color, double price)
+    {
+        Name = name;
+        Color = color;
+        Price = price;
+    }
+
+    public void Input()
+    {
+        Console.Write("Enter the car name: ");
+        Name = Console.ReadLine();
+
+        Console.Write("Enter the car color: ");
+        Color = Console.ReadLine();
+
+        Console.Write("Enter the car price: ");
+t        Price = Convert.ToDouble(Console.ReadLine());
+    }
+
+    public void Print()
+    {
+        Console.WriteLine("Car: " + Name + ", Color: " + Color + ", Price: " + Price + ", Company: " + CompanyName);
+    }
+
+    public void ChangePrice(double percentage)
+    {
+        Price = Price - (Price * (percentage / 100));
+    }
+
+    public void PaintCar(string newColor)
+    {
+        if (!Color.Equals("white", StringComparison.OrdinalIgnoreCase))
+        {
+            Console.WriteLine("Car color can only be changed for cars with the color white.");
+            return;
+        }
+
+        Color = newColor;
+    }
+
+    public string PrintInfo()
+    {
+        return "Car: " + Name + ", Color: " + Color + ", Price: " + Price + ", Company: " + CompanyName;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+
+        Car car1 = new Car();
+        Car car2 = new Car("Model2", "blue", 25000);
+        Car car3 = new Car();
+
+        car1.Input();
+        car3.Input();
+
+        Console.WriteLine("\nCar Information:");
+        car1.Print();
+        car2.Print();
+        car3.Print();
+
+
+        car1.ChangePrice(10);
+        car2.ChangePrice(10);
+        car3.ChangePrice(10);
+
+        Console.WriteLine("\nCar Information after Price Change:");
+        car1.Print();
+        car2.Print();
+        car3.Print();
+
+
+        Console.Write("\nEnter the new color for the white cars: ");
+        string newColor = Console.ReadLine();
+
+        car1.PaintCar(newColor);
+        car3.PaintCar(newColor);
+
+        Console.WriteLine("\nCar Information after Color Change:");
+        Console.WriteLine(car1.PrintInfo());
+        Console.WriteLine(car2.PrintInfo());
+        Console.WriteLine(car3.PrintInfo());
+    }
+}
