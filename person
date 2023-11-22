@@ -1,0 +1,170 @@
+using System;
+
+class Person
+{
+    private string name;
+    private DateTime birthYear;
+
+    public string Name
+    {
+        get { return name; }
+    }
+
+    public DateTime BirthYear
+    {
+        get { return birthYear; }
+    }
+
+    public Person()
+    {
+        name = "Unknown";
+        birthYear = DateTime.MinValue;
+    }
+
+    public Person(string name, DateTime birthYear)
+    {
+        this.name = name;
+        this.birthYear = birthYear;
+    }
+
+    public int Age()
+    {
+        DateTime currentDate = DateTime.Now;
+        int age = currentDate.Year - birthYear.Year;
+
+        if (currentDate < birthYear.AddYears(age))
+        {
+            age--;
+        }
+
+        return age;
+    }
+
+    public void Input()
+    {
+        Console.Write("Enter the name: ");
+        name = Console.ReadLine();
+
+        Console.Write("Enter the birth year: ");
+        birthYear = DateTime.Parse(Console.ReadLine());
+    }
+
+    public void ChangeName(string newName)
+    {
+        name = newName;
+    }
+
+    public override string ToString()
+    {
+        return "Name: " + name + ", Birth Year: " + birthYear.Year;
+    }
+
+    public void Output()
+    {
+        Console.WriteLine(ToString());
+    }
+
+    public static bool operator ==(Person person1, Person person2)
+    {
+        return person1.name == person2.name;
+    }
+
+    public static bool operator !=(Person person1, Person person2)
+    {
+        return person1.name != person2.name;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Person person1 = new Person();
+        Person person2 = new Person();
+        Person person3 = new Person();
+        Person person4 = new Person();
+        Person person5 = new Person();
+        Person person6 = new Person();
+
+        Console.WriteLine("Enter information for Person 1:");
+        person1.Input();
+
+        Console.WriteLine("\nEnter information for Person 2:");
+        person2.Input();
+
+        Console.WriteLine("\nEnter information for Person 3:");
+        person3.Input();
+
+        Console.WriteLine("\nEnter information for Person 4:");
+        person4.Input();
+
+        Console.WriteLine("\nEnter information for Person 5:");
+        person5.Input();
+
+        Console.WriteLine("\nEnter information for Person 6:");
+        person6.Input();
+
+ 
+        Console.WriteLine("\nName and Age of each person:");
+        Console.WriteLine(person1.Name + person1.Age() + " years old");
+        Console.WriteLine(person2.Name + person2.Age() + " years old");
+        Console.WriteLine(person3.Name + person3.Age() + " years old");
+        Console.WriteLine(person4.Name + person4.Age() + " years old");
+        Console.WriteLine(person5.Name + person5.Age() + " years old");
+        Console.WriteLine(person6.Name + person6.Age() + " years old");
+
+        if (person1.Age() < 16)
+        {
+            person1.ChangeName("Very Young");
+        }
+
+        if (person2.Age() < 16)
+        {
+            person2.ChangeName("Very Young");
+        }
+
+        if (person3.Age() < 16)
+        {
+            person3.ChangeName("Very Young");
+        }
+
+        if (person4.Age() < 16)
+        {
+            person4.ChangeName("Very Young");
+        }
+
+        if (person5.Age() < 16)
+        {
+            person5.ChangeName("Very Young");
+        }
+
+        if (person6.Age() < 16)
+        {
+            person6.ChangeName("Very Young");
+        }
+
+        Console.WriteLine("\nInformation about all persons:");
+        person1.Output();
+        person2.Output();
+        person3.Output();
+        person4.Output();
+        person5.Output();
+        person6.Output();
+
+        Console.WriteLine("\nInformation about persons with the same names:");
+        if (person1 == person2)
+        {
+            Console.WriteLine(person1.Name + "and" + person2.Name+ " have the same name");
+        }
+
+        if (person1 == person3)
+        {
+            Console.WriteLine(person1.Name + "and" + person3.Name + " have the same name");
+        }
+
+        if (person2 == person3)
+        {
+            Console.WriteLine(person2.Name + "and" + person3.Name + " have the same name");
+        }
+    }
+}
