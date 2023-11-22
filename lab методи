@@ -1,0 +1,256 @@
+using System;
+
+class Calculator
+{
+    static void Main()
+    {
+        double additionResult = PerformOperation(10, 2, "addition");
+        double subtractionResult = PerformOperation(10, 2, "subtraction");
+        double multiplicationResult = PerformOperation(10, 2, "multiplication");
+        double divisionResult = PerformOperation(10, 2, "division");
+
+        Console.WriteLine("Result of addition: " + additionResult);
+        Console.WriteLine("Result of subtraction: " + subtractionResult);
+        Console.WriteLine("Result of multiplication: " + multiplicationResult);
+        Console.WriteLine("Result of division: " + divisionResult);
+    }
+
+    static double PerformOperation(double operand1, double operand2, string operation)
+    {
+        double result = 0;
+
+        switch (operation)
+        {
+            case "addition":
+                result = Add(operand1, operand2);
+                break;
+            case "subtraction":
+                result = Subtract(operand1, operand2);
+                break;
+            case "multiplication":
+                result = Multiply(operand1, operand2);
+                break;
+            case "division":
+                result = Divide(operand1, operand2);
+                break;
+            default:
+                Console.WriteLine("Unknown operation");
+                break;
+        }
+
+        return result;
+    }
+
+    static double Add(double a, double b)
+    {
+        return a + b;
+    }
+
+    static double Subtract(double a, double b)
+    {
+        return a - b;
+    }
+
+    static double Multiply(double a, double b)
+    {
+        return a * b;
+    }
+
+    static double Divide(double a, double b)
+    {
+        if (b != 0)
+        {
+            return a / b;
+        }
+        else
+        {
+            Console.WriteLine("Division by zero is not allowed");
+            return 0;
+        }
+    }
+}
+
+//2
+class Program
+{
+    static void Main()
+    {
+        int number1 = 6;
+        int number2 = 71;
+
+        bool isPrime1 = IsPrime(number1);
+        bool isPrime2 = IsPrime(number2);
+
+        Console.WriteLine(number1 + " is prime: " + isPrime1);
+        Console.WriteLine(number2 + " is prime: " + isPrime2);
+    }
+
+    static bool IsPrime(int number)
+    {
+        if (number <= 1)
+        {
+            return false;
+        }
+
+        for (int i = 2; i <= Math.Sqrt(number); i++)
+        {
+            if (number % i == 0)
+            {
+                return false; 
+            }
+        }
+
+        return true;
+    }
+}
+
+//3
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        double amountInUSD = 100.0;
+        double exchangeRateToEUR = 0.85;
+
+        double convertedAmountToEUR = ConvertCurrency(amountInUSD, exchangeRateToEUR);
+
+        Console.WriteLine(amountInUSD + " USD is equal to " + convertedAmountToEUR + "EUR");
+    }
+
+    static double ConvertCurrency(double amount, double exchangeRate)
+    {
+        if (amount < 0 || exchangeRate < 0)
+        {
+            PrintError("Amount and exchange rate should be non-negative");
+            return -1.0; 
+        }
+
+        return amount * exchangeRate;
+    }
+
+    static void PrintError(string errorMessage)
+    {
+        Console.WriteLine("Error: " + errorMessage);
+    }
+}
+
+//4
+class Program
+{
+    static (int, int) FindMinMax(int[] array)
+    {
+        if (array == null || array.Length == 0)
+        {
+            Console.WriteLine("The array is empty");
+            return (0, 0);
+        }
+
+        int min = array.Min();
+        int max = array.Max();
+
+        return (min, max);
+    }
+
+    static void Main()
+    {
+        int[] numbersArray = { 7, 23, 3, 34, 2, 9, 21 };
+
+        var (minimum, maximum) = FindMinMax(numbersArray);
+
+        Console.WriteLine("Minimum element: " + minimum);
+        Console.WriteLine("Maximum element: " + maximum);
+    }
+}
+
+//5
+class Program
+{
+
+    static void CountVowelsAndConsonants(string inputString)
+    {
+        if (string.IsNullOrEmpty(inputString))
+        {
+            Console.WriteLine("The input string is empty");
+            return;
+        }
+
+        int vowelCount = 0;
+        int consonantCount = 0;
+
+        string lowercaseInput = inputString.ToLower();
+
+        foreach (char character in lowercaseInput)
+        {
+
+            if (char.IsLetter(character))
+            {
+                if ("aeiou".Contains(character))
+                    vowelCount++;
+                else
+                    consonantCount++;
+            }
+        }
+
+        Console.WriteLine("Input String: " + inputString);
+        Console.WriteLine("Number of vowels: " + vowelCount);
+        Console.WriteLine("Number of consonants: " + consonantCount);
+    }
+
+    static void Main()
+    {
+        string inputString = "My friend";
+        CountVowelsAndConsonants(inputString);
+    }
+}
+
+//6
+class GeometryCalculator
+{
+
+    static double CalculateCircleArea(double radius)
+    {
+        return Math.PI * Math.Pow(radius, 2);
+    }
+
+    static double CalculateRectangleArea(double length, double width)
+    {
+        return length * width;
+    }
+
+    static double CalculateCubeVolume(double sideLength)
+    {
+        return Math.Pow(sideLength, 3);
+    }
+
+    static void Main()
+    {
+        Console.Write("Enter the radius of the circle: ");
+        double circleRadius = Convert.ToDouble(Console.ReadLine());
+
+        double circleArea = CalculateCircleArea(circleRadius);
+        Console.WriteLine("Circle Area: " + circleArea);
+
+        Console.WriteLine();
+
+        Console.Write("Enter the length of the rectangle: ");
+        double rectangleLength = Convert.ToDouble(Console.ReadLine());
+
+        Console.Write("Enter the width of the rectangle: ");
+        double rectangleWidth = Convert.ToDouble(Console.ReadLine());
+
+        double rectangleArea = CalculateRectangleArea(rectangleLength, rectangleWidth);
+        Console.WriteLine("Rectangle Area: " + rectangleArea);
+
+        Console.WriteLine();
+
+        Console.Write("Enter the side length of the cube: ");
+        double cubeSideLength = Convert.ToDouble(Console.ReadLine());
+
+        double cubeVolume = CalculateCubeVolume(cubeSideLength);
+        Console.WriteLine("Cube Volume: " + cubeVolume);
+    }
+}
+
+
