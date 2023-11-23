@@ -1,0 +1,147 @@
+using System;
+
+public interface IVehicle
+{
+    void Start(); 
+    void Stop();  
+    void Drive();  
+}
+
+
+public class Car : IVehicle
+{
+    public string Model { get; set; }
+    public int Year { get; set; }
+
+    public Car(string model, int year)
+    {
+        Model = model;
+        Year = year;
+    }
+
+    public void Start()
+    {
+        Console.WriteLine(Model + " " + Year + " - Engine started.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine(Model + " " + Year + " - Engine stopped.");
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine(Model + " " + Year + " - Car is moving.");
+    }
+
+    public void Honk()
+    {
+        Console.WriteLine(Model + " " + Year + " - Honk! Honk!");
+    }
+}
+
+
+public class Motorcycle : IVehicle
+{
+    public string Brand { get; set; }
+    public string Model { get; set; }
+
+    public Motorcycle(string brand, string model)
+    {
+        Brand = brand;
+        Model = model;
+    }
+
+    public void Start()
+    {
+        Console.WriteLine(Brand + " " + Model + " - Engine started.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine(Brand + " " + Model + " - Engine stopped.");
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine(Brand + " " + Model + " - Motorcycle is on the move.");
+    }
+
+    public void Wheelie()
+    {
+        Console.WriteLine(Brand + " " + Model + " - Performing a wheelie!");
+    }
+}
+
+public class Truck : IVehicle
+{
+    public string Manufacturer { get; set; }
+    public double PayloadCapacity { get; set; }
+
+    public Truck(string manufacturer, double payloadCapacity)
+    {
+        Manufacturer = manufacturer;
+        PayloadCapacity = payloadCapacity;
+    }
+
+    public void Start()
+    {
+        Console.WriteLine(Manufacturer + " Truck - Engine started.");
+    }
+
+    public void Stop()
+    {
+        Console.WriteLine(Manufacturer + " Truck - Engine stopped.");
+    }
+
+    public void Drive()
+    {
+        Console.WriteLine(Manufacturer + " Truck - Truck is in motion.");
+    }
+
+    public void LoadCargo()
+    {
+        Console.WriteLine(Manufacturer + " Truck - Loading cargo. Capacity: " + PayloadCapacity + " tons");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Car car = new Car("Toyota Camry", 2022);
+        Motorcycle motorcycle = new Motorcycle("Harley Davidson", "Sportster");
+        Truck truck = new Truck("Volvo", 15.5);
+
+        TestVehicle(car);
+        TestVehicle(motorcycle);
+        TestVehicle(truck);
+
+        Console.ReadLine();
+    }
+
+    static void TestVehicle(IVehicle vehicle)
+    {
+        Console.WriteLine("Testing " + vehicle.GetType().Name);
+        vehicle.Start();
+        vehicle.Drive();
+        vehicle.Stop();
+
+        if (vehicle is Car)
+        {
+            ((Car)vehicle).Honk();
+        }
+        else if (vehicle is Motorcycle)
+        {
+            ((Motorcycle)vehicle).Wheelie();
+        }
+        else if (vehicle is Truck)
+        {
+            ((Truck)vehicle).LoadCargo();
+        }
+
+        Console.WriteLine();
+    }
+}
+
+//2
