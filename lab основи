@@ -1,0 +1,177 @@
+using System;
+
+public class Figure
+{
+    public virtual double CalculateArea()
+    {
+        return 0;
+    }
+
+    public virtual double CalculatePerimeter()
+    {
+        return 0;
+    }
+}
+
+public class Circle : Figure
+{
+    public double Radius { get; set; }
+
+    public override double CalculateArea()
+    {
+        return Math.PI * Math.Pow(Radius, 2);
+    }
+
+    public override double CalculatePerimeter()
+    {
+        return 2 * Math.PI * Radius;
+    }
+}
+
+public class Rectangle : Figure
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    public override double CalculateArea()
+    {
+        return Width * Height;
+    }
+
+    public override double CalculatePerimeter()
+    {
+        return 2 * (Width + Height);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Circle circle = new Circle();
+        circle.Radius = 6;
+
+        Console.WriteLine("Circle:");
+        Console.WriteLine("Area: " + circle.CalculateArea());
+        Console.WriteLine("Perimeter: " + circle.CalculatePerimeter());
+        Console.WriteLine();
+
+        Rectangle rectangle = new Rectangle();
+        rectangle.Width = 8;
+        rectangle.Height = 10;
+
+        Console.WriteLine("Rectangle:");
+        Console.WriteLine("Area: " + rectangle.CalculateArea());
+        Console.WriteLine("Perimeter: " + rectangle.CalculatePerimeter());
+
+        Console.ReadLine(); 
+    }
+}
+
+//2
+public class Fruit
+{
+    public string Name { get; set; }
+}
+
+public class Apple : Fruit
+{
+    public string Variety { get; set; }
+    public string Color { get; set; }
+}
+
+public class Pear : Fruit
+{
+    public string Variety { get; set; }
+    public string Color { get; set; }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Fruit fruit = new Fruit();
+        fruit.Name = "Generic Fruit";
+
+        Console.WriteLine("Base Fruit:");
+        Console.WriteLine("Name: " + fruit.Name);
+        Console.WriteLine();
+
+        Apple apple = new Apple();
+        apple.Name = "Apple";
+        apple.Variety = "Red Tasty";
+        apple.Color = "Red";
+
+        Console.WriteLine("Apple:");
+        Console.WriteLine("Name: " + apple.Name);
+        Console.WriteLine("Variety: " + apple.Variety);
+        Console.WriteLine("Color: " + apple.Color);
+        Console.WriteLine();
+
+        Pear pear = new Pear();
+        pear.Name = "Pear";
+        pear.Variety = "Bartlett";
+        pear.Color = "Yellow";
+
+        Console.WriteLine("Pear:");
+        Console.WriteLine("Name: " + pear.Name);
+        Console.WriteLine("Variety: " + pear.Variety);
+        Console.WriteLine("Color: " + pear.Color);
+
+        Console.ReadLine(); 
+    }
+}
+
+//3
+public abstract class Animal
+{
+    public float Weight { get; set; }
+    public string Color { get; set; }
+
+    public Animal(string color, float weight)
+    {
+        Color = color;
+        Weight = weight;
+    }
+
+    public abstract string MakeSound();
+}
+
+public abstract class AnimalWithTail : Animal
+{
+    public float TailLength { get; set; }
+
+    public AnimalWithTail(string color, float weight, float tailLength)
+        : base(color, weight)
+    {
+        TailLength = tailLength;
+    }
+}
+
+public class Dog : AnimalWithTail
+{
+    public Dog(string color, float weight, float tailLength)
+        : base(color, weight, tailLength)
+    {
+    }
+
+    public override string MakeSound()
+    {
+        return "Woof! Woof!";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Dog dog = new Dog("Brown", 15.5f, 10.2f);
+
+        Console.WriteLine("Color: " + dog.Color);
+        Console.WriteLine("Weight: " + dog.Weight + "kg");
+        Console.WriteLine("Tail Length: " + dog.TailLength + "units");
+        Console.WriteLine("Sound: " + dog.MakeSound());
+
+        Console.ReadLine(); 
+    }
+}
