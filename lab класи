@@ -1,0 +1,132 @@
+using Susing System;
+using System.Collections.Generic;
+
+interface IProduct
+{
+    string Name { get; set; }
+    double Price { get; set; }
+
+    double CalculateDiscount();
+}
+
+abstract class Product : IProduct
+{
+    public string Name { get; set; }
+    public double Price { get; set; }
+
+    public abstract double CalculateCost();
+
+    public double CalculateDiscount()
+    {
+        return 0.1 * Price;
+    }
+}
+
+class Book : Product
+{
+    public int Pages { get; set; }
+
+    public override double CalculateCost()
+    {
+        return Price * Pages;
+    }
+}
+
+class Electronics : Product
+{
+    public int MemorySize { get; set; }
+
+    public override double CalculateCost()
+    {
+        return Price * MemorySize;
+    }
+}
+
+class Clothing : Product
+{
+    public string Size { get; set; }
+
+    public override double CalculateCost()
+    {
+        return Price * (Size.Length + 1); 
+}
+
+class Program
+{
+    static void Main()
+    {
+        List<Product> products = new List<Product>();
+
+        products.Add(new Book { Name = "9 November", Price = 10, Pages = 200 });
+        products.Add(new Electronics { Name = "IPhone", Price = 50, MemorySize = 256 });
+        products.Add(new Clothing { Name = "Skirt", Price = 30, Size = "S" });
+
+        foreach (var product in products)
+        {
+            Console.WriteLine("Name: " + product.Name + ", Cost: " + product.CalculateCost() + ", Discount: " + product.CalculateDiscount());
+        }
+
+        Console.ReadLine();
+    }
+}
+
+
+
+//2
+class Order
+{
+    public int OrderNumber { get; set; }
+    public List<string> Items { get; set; }
+    public double TotalCost { get; set; }
+
+    public delegate void OrderStatusChangedHandler(string status);
+
+    public event OrderStatusChangedHandler OrderStatusChanged;
+
+    public void ChangeOrderStatus(string status)
+    {
+        OrderStatusChanged?.Invoke(status);
+    }
+}
+
+class OrderProcessor
+{
+    public void ProcessOrder(Order order)
+    {
+
+        order.ChangeOrderStatus("Processed");
+    }
+}
+
+class NotificationService
+{
+    public void SendNotification(string status)
+    {
+        Console.WriteLine("Notification: Order status changed to " + status);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Order order = new Order
+        {
+            OrderNumber = 1,
+            Items = new List<string> { "Item1", "Item2" },
+            TotalCost = 100.0
+        };
+
+        OrderProcessor orderProcessor = new OrderProcessor();
+
+        NotificationService notificationService = new NotificationService();
+
+        order.OrderStatusChanged += notificationService.SendNotification;
+
+        orderProcessor.ProcessOrder(order);
+
+        Console.WriteLine("Order Status: Processed");
+
+        Console.ReadLine(); 
+    }
+}
